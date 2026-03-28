@@ -1,0 +1,5 @@
+{"_type": "metadata", "key": "webchat:84600c36-5a4f-45b2-ad2b-6f8c2670bcc2", "created_at": "2026-03-28T19:49:12.343332", "updated_at": "2026-03-28T19:49:19.180423", "metadata": {}, "last_consolidated": 0}
+{"role": "user", "content": "List all scheduled jobs or cron tasks you have.", "timestamp": "2026-03-28T19:49:19.180369"}
+{"role": "assistant", "content": "", "tool_calls": [{"id": "OE4fjMvJE", "type": "function", "function": {"name": "cron", "arguments": "{\"action\": \"list\"}"}}], "timestamp": "2026-03-28T19:49:19.180399"}
+{"role": "tool", "tool_call_id": "OE4fjMvJE", "name": "cron", "content": "No scheduled jobs.", "timestamp": "2026-03-28T19:49:19.180412"}
+{"role": "assistant", "content": "目前没有已安排的定时任务或计划任务。如果你需要创建新的定时任务，请告诉我具体的时间和任务内容，我可以帮你设置！", "timestamp": "2026-03-28T19:49:19.180418"}

@@ -5,6 +5,8 @@ from __future__ import annotations
 import asyncio
 import json
 import os
+import urllib.parse
+import urllib.request
 from collections.abc import Awaitable, Callable, Sequence
 from typing import Any
 
@@ -112,6 +114,38 @@ async def _sync_pipeline(_args: _NoArgs) -> list[TextContent]:
     return _text(await _client().sync_pipeline())
 
 
+async def _observability_logs(_args: _NoArgs) -> list[TextContent]:
+    try:
+        params = urllib.parse.urlencode(
+            {
+                "query": 'service.name:"Learning Management Service"',
+                "limit": 20,
+            }
+        )
+        url = f"http://victorialogs:9428/select/logsql/query?{params}"
+        with urllib.request.urlopen(url, timeout=10) as resp:
+            result = resp.read().decode("utf-8", errors="replace")
+        return [TextContent(type="text", text=result)]
+    except Exception as e:
+        return [TextContent(type="text", text=f"Error fetching logs: {e}")]
+
+
+async def _observability_traces(_args: _NoArgs) -> list[TextContent]:
+    try:
+        params = urllib.parse.urlencode(
+            {
+                "service": "Learning Management Service",
+                "limit": 10,
+            }
+        )
+        url = f"http://victoriatraces:10428/select/jaeger/api/traces?{params}"
+        with urllib.request.urlopen(url, timeout=10) as resp:
+            result = resp.read().decode("utf-8", errors="replace")
+        return [TextContent(type="text", text=result)]
+    except Exception as e:
+        return [TextContent(type="text", text=f"Error fetching traces: {e}")]
+
+
 # ---------------------------------------------------------------------------
 # Registry: tool name -> (input model, handler, Tool definition)
 # ---------------------------------------------------------------------------
@@ -128,7 +162,6 @@ def _register(
     handler: Callable[..., Awaitable[list[TextContent]]],
 ) -> None:
     schema = model.model_json_schema()
-    # Pydantic puts definitions under $defs; flatten for MCP's JSON Schema expectation.
     schema.pop("$defs", None)
     schema.pop("title", None)
     _TOOLS[name] = (
@@ -183,6 +216,18 @@ _register(
     "Trigger the LMS sync pipeline. May take a moment.",
     _NoArgs,
     _sync_pipeline,
+)
+_register(
+    "observability_logs",
+    "Fetch logs from VictoriaLogs.",
+    _NoArgs,
+    _observability_logs,
+)
+_register(
+    "observability_traces",
+    "Fetch traces from VictoriaTraces.",
+    _NoArgs,
+    _observability_traces,
 )
 
 
