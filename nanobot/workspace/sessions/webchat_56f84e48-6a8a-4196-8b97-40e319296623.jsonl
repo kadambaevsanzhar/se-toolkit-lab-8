@@ -1,0 +1,3 @@
+{"_type": "metadata", "key": "webchat:56f84e48-6a8a-4196-8b97-40e319296623", "created_at": "2026-03-28T18:12:07.393382", "updated_at": "2026-03-28T18:12:09.095398", "metadata": {}, "last_consolidated": 0}
+{"role": "user", "content": "hello", "timestamp": "2026-03-28T18:12:09.095370"}
+{"role": "assistant", "content": "Hello! How can I assist you today? 😊", "timestamp": "2026-03-28T18:12:09.095393"}

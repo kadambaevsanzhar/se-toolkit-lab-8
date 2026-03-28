@@ -16,10 +16,12 @@ async def get_items(session: AsyncSession = Depends(get_session)):
     """Get all items."""
     try:
         return await read_items(session)
+    except HTTPException:
+        raise
     except Exception as exc:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Items not found",
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Database error while fetching items",
         ) from exc
 
 

@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "2bacd0d3",
+      "name": "Checking backend health",
+      "enabled": true,
+      "schedule": {
+        "kind": "cron",
+        "atMs": null,
+        "everyMs": null,
+        "expr": "*/15 * * * *",
+        "tz": "UTC"
+      },
+      "payload": {
+        "kind": "agent_turn",
+        "message": "Checking backend health",
+        "deliver": true,
+        "channel": "webchat",
+        "to": "86233876-188d-41fc-8857-1a8023492fa2"
+      },
+      "state": {
+        "nextRunAtMs": 1774730700000,
+        "lastRunAtMs": 1774729800001,
+        "lastStatus": "ok",
+        "lastError": null,
+        "runHistory": [
+          {
+            "runAtMs": 1774728900001,
+            "status": "ok",
+            "durationMs": 9104,
+            "error": null
+          },
+          {
+            "runAtMs": 1774729800001,
+            "status": "ok",
+            "durationMs": 9329,
+            "error": null
+          }
+        ]
+      },
+      "createdAtMs": 1774728615432,
+      "updatedAtMs": 1774729809330,
+      "deleteAfterRun": false
+    }
+  ]
+}
