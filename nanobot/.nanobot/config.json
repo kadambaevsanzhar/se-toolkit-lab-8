@@ -18,7 +18,9 @@
     "sendMaxRetries": 3,
     "webchat": {
       "enabled": true,
-      "allowFrom": [],
+      "allowFrom": [
+        "*"
+      ],
       "host": "0.0.0.0",
       "port": 8765
     }
@@ -63,8 +65,8 @@
           "mcp_lms"
         ],
         "env": {
-          "NANOBOT_LMS_BACKEND_URL": "",
-          "NANOBOT_LMS_API_KEY": ""
+          "NANOBOT_LMS_BACKEND_URL": "http://backend:8000",
+          "NANOBOT_LMS_API_KEY": "my_secret_api_key"
         }
       },
       "webchat": {
@@ -74,9 +76,9 @@
           "mcp_webchat"
         ],
         "env": {
-          "NANOBOT_WEBCHAT_UI_RELAY_URL": "",
-          "NANOBOT_WEBCHAT_UI_TOKEN": "",
-          "NANOBOT_ACCESS_KEY": ""
+          "NANOBOT_WEBCHAT_UI_RELAY_URL": "ws://127.0.0.1:8765",
+          "NANOBOT_WEBCHAT_UI_TOKEN": "my_secret_api_key",
+          "NANOBOT_ACCESS_KEY": "my_secret_api_key"
         }
       }
     }

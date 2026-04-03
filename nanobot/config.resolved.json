@@ -13,6 +13,9 @@
     }
   },
   "channels": {
+    "sendProgress": true,
+    "sendToolHints": false,
+    "sendMaxRetries": 3,
     "webchat": {
       "enabled": true,
       "allowFrom": [
@@ -20,11 +23,8 @@
       ],
       "host": "0.0.0.0",
       "port": 8765,
-      "accessKey": "my_secret_api_key_2"
-    },
-    "sendProgress": true,
-    "sendToolHints": false,
-    "sendMaxRetries": 3
+      "accessKey": "my_secret_api_key"
+    }
   },
   "providers": {
     "custom": {
@@ -78,8 +78,8 @@
         ],
         "env": {
           "NANOBOT_WEBCHAT_UI_RELAY_URL": "ws://127.0.0.1:8765",
-          "NANOBOT_WEBCHAT_UI_TOKEN": "my_secret_api_key_2",
-          "NANOBOT_ACCESS_KEY": "my_secret_api_key_2"
+          "NANOBOT_WEBCHAT_UI_TOKEN": "my_secret_api_key",
+          "NANOBOT_ACCESS_KEY": "my_secret_api_key"
         }
       }
     }

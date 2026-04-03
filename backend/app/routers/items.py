@@ -14,15 +14,7 @@ router = APIRouter()
 @router.get("/", response_model=list[ItemRecord])
 async def get_items(session: AsyncSession = Depends(get_session)):
     """Get all items."""
-    try:
-        return await read_items(session)
-    except HTTPException:
-        raise
-    except Exception as exc:
-        raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Database error while fetching items",
-        ) from exc
+    return await read_items(session)
 
 
 @router.get("/{item_id}", response_model=ItemRecord)
