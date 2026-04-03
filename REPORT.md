@@ -92,3 +92,4 @@ No metrics are displayed because OTEL_METRICS_EXPORTER is disabled (set to "none
      2. Code fix (diff or description)
      3. Post-fix response to "What went wrong?" showing the real underlying failure
      4. Healthy follow-up report or transcript after recovery -->
+Task 4A completed - observability skill created and tested
