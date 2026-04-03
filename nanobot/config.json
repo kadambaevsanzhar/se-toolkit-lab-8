@@ -13,15 +13,15 @@
     }
   },
   "channels": {
-    "webchat": {
-      "enabled": true,
-      "allowFrom": ["*"],
-      "host": "0.0.0.0",
-      "port": 8765
-    },
     "sendProgress": true,
     "sendToolHints": false,
-    "sendMaxRetries": 3
+    "sendMaxRetries": 3,
+    "webchat": {
+      "enabled": true,
+      "allowFrom": [],
+      "host": "0.0.0.0",
+      "port": 8765
+    }
   },
   "providers": {
     "custom": {
@@ -58,7 +58,10 @@
     "mcpServers": {
       "lms": {
         "command": "python3",
-        "args": ["-m", "mcp_lms"],
+        "args": [
+          "-m",
+          "mcp_lms"
+        ],
         "env": {
           "NANOBOT_LMS_BACKEND_URL": "",
           "NANOBOT_LMS_API_KEY": ""
@@ -66,7 +69,10 @@
       },
       "webchat": {
         "command": "python3",
-        "args": ["-m", "mcp_webchat"],
+        "args": [
+          "-m",
+          "mcp_webchat"
+        ],
         "env": {
           "NANOBOT_WEBCHAT_UI_RELAY_URL": "",
           "NANOBOT_WEBCHAT_UI_TOKEN": "",

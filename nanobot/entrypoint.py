@@ -8,7 +8,7 @@ APP_DIR = pathlib.Path("/app/nanobot")
 CONFIG_PATH = APP_DIR / "config.json"
 RESOLVED_CONFIG_PATH = APP_DIR / "config.resolved.json"
 WORKSPACE_PATH = APP_DIR / "workspace"
-NANOBOT_BIN = "/opt/venv/bin/nanobot"
+NANOBOT_BIN = "/opt/nanobot/.venv/bin/nanobot"
 
 
 def env_str(name: str, default: str | None = None) -> str | None:
@@ -127,15 +127,12 @@ def main() -> None:
     if not os.path.exists(NANOBOT_BIN):
         raise FileNotFoundError(f"Nanobot binary not found: {NANOBOT_BIN}")
 
+    os.environ["NANOBOT_CONFIG_FILE"] = str(RESOLVED_CONFIG_PATH)
     os.execv(
         NANOBOT_BIN,
         [
             NANOBOT_BIN,
             "gateway",
-            "--config",
-            str(RESOLVED_CONFIG_PATH),
-            "--workspace",
-            str(WORKSPACE_PATH),
         ],
     )
 
